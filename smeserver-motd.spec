@@ -1,6 +1,6 @@
 %define name smeserver-motd
 %define version 0.1
-%define release 1
+%define release 2
 Summary: Adjust the login motd display
 Name: %{name}
 Version: %{version}
@@ -21,6 +21,9 @@ A small contribution to give a more informative display on ssh login
 %changelog
 * Mon Jun 27 2016 John Crisp <jcrisp@safeandsoundit.co.uk> 0.1-1
 - Initial build
+
+* Mon Jun 27 2016 John Crisp <jcrisp@safeandsoundit.co.uk> 0.1-2
+- Fix a typo in the spec file
 
 %prep
 %setup
@@ -48,5 +51,5 @@ rm -rf %{name}-%{version}
 %preun
 
 %post
-s
+
 %postun
