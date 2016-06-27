@@ -1,0 +1,73 @@
+{
+
+    use strict;
+    use warnings;
+    use esmith::ConfigDB;
+
+    my $configDB = esmith::ConfigDB->open_ro or die("can't open Config DB");
+
+    my $motdStatus = $configDB->get_prop( 'motd', 'status' ) || 'disabled';
+
+    if ( $motdStatus eq 'enabled' ) {
+
+        my %colours;
+        foreach ( "White",     "Blue",     "Green",       "LightGreen", "Black",
+                  "Red",       "LightRed", "DarkGray",    "LightGray",  "Cyan",
+                  "LightCyan", "Purple",   "LightPurple", "White",
+          ) {
+            $colours{$_} = 1;
+        }
+
+        my $message = ( $configDB->get_prop( 'motd', 'message' ) || '' );
+
+        #print $message;
+
+        $message = 'Std' unless ( exists $colours{$message} );
+
+        my $info = ( $configDB->get_prop( 'motd', 'info' ) || 'Std' );
+
+        $info = 'Std' unless ( exists $colours{$info} );
+
+        $OUT .= <<'_EOF';
+#!/bin/bash
+
+# put in /etc/profile.d
+
+# Creates a colorful & informative "message of the day (motd)".
+# Save as /etc/profile.d/motd.sh
+# Written by I. Attir.
+# http://www.good-linux-tips.com 
+
+# Setting variables for ANSI colors
+
+White="\033[01;37m"
+Blue="\033[01;34m"
+Green="\033[0;32m"
+LightGreen="\033[1;32m"
+Black="\033[0;30m"
+Red="\033[0;31m"
+LightRed="\033[1;31m"
+DarkGray="\033[0;30m"
+LightGray="\033[0;37m"
+Cyan="\033[0;36m"
+LightCyan="\033[1;36m"
+Purple="\033[0;35m"
+LightPurple="\033[1;35m"
+White="\033[1;37m"
+Std="\033[m"
+
+# Displaying colorful info: hostname, OS, kernel and username.
+
+echo
+_EOF
+
+        $OUT .= "echo -e \"\$Green===================================================\$$message\n";
+        $OUT .= "Welcome to \$$info\$\(hostname\)\$$message\n";
+        $OUT .= "This system is running \$$info\$\(cat \/etc\/redhat-release\)\$$message\n";
+        $OUT .= "Kernel version \$$info\$(uname -r)\$$message\n";
+        $OUT .= "You are currently logged in as \$$info\$(whoami)\$$message\n";
+        $OUT .= "\$Green===================================================\$Std\"\n";
+        $OUT .= "echo\n";
+    }
+}
+

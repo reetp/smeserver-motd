@@ -1,0 +1,19 @@
+#! /usr/bin/perl -w
+
+# Need some thought on when the templates should be expanded and when the action should be called.
+
+use esmith::Build::CreateLinks qw(:all);
+
+foreach (qw(
+
+       /etc/profile.d/motd.sh
+    ))
+{
+    templates2events("$_", qw(
+    post-upgrade
+    console-save
+    bootstrap-console-save
+    remoteaccess-update
+
+    ));
+}
