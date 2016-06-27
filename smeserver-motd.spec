@@ -20,8 +20,7 @@ A small contribution to give a more informative display on ssh login
 
 %changelog
 * Mon Jun 27 2016 John Crisp <jcrisp@safeandsoundit.co.uk> 0.1-1
-
-
+- Initial build
 
 %prep
 %setup
