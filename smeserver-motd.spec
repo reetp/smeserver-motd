@@ -1,6 +1,6 @@
 %define name smeserver-motd
 %define version 0.1
-%define release 4
+%define release 5
 Summary: Adjust the login motd display
 Name: %{name}
 Version: %{version}
@@ -10,6 +10,7 @@ URL: http://libreswan.org/
 Group: SMEserver/addon
 Source: %{name}-%{version}.tar.gz
 Patch1: smeserver-motd-addstatuskey.patch
+Patch1: smeserver-motd-addtypekey.patch
 BuildRoot: /var/tmp/%{name}-%{version}
 BuildArchitectures: noarch
 BuildRequires: e-smith-devtools
@@ -20,6 +21,10 @@ AutoReqProv: no
 A small contribution to give a more informative display on ssh login
 
 %changelog
+
+* Wed Jun 29 2016 John Crisp <jcrisp@safeandsoundit.co.uk> 0.1-5.sme
+- Add db type key
+
 * Wed Jun 29 2016 John Crisp <jcrisp@safeandsoundit.co.uk> 0.1-4.sme
 - Add db status key
 
@@ -35,6 +40,7 @@ A small contribution to give a more informative display on ssh login
 %prep
 %setup
 %patch1 -p1
+%patch2 -p1
 
 %build
 perl createlinks
