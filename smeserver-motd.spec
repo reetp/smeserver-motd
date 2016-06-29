@@ -20,7 +20,7 @@ AutoReqProv: no
 A small contribution to give a more informative display on ssh login
 
 %changelog
-* Mon Jun 27 2016 John Crisp <jcrisp@safeandsoundit.co.uk> 0.1-4.sme
+* Wed Jun 29 2016 John Crisp <jcrisp@safeandsoundit.co.uk> 0.1-4.sme
 - Add db status key
 
 * Tue Jun 28 2016 stephane de Labrusse <stephdl@de-labrusse.fr> 0.1-3.sme
