@@ -10,7 +10,7 @@ URL: http://libreswan.org/
 Group: SMEserver/addon
 Source: %{name}-%{version}.tar.gz
 Patch1: smeserver-motd-addstatuskey.patch
-Patch1: smeserver-motd-addtypekey.patch
+Patch2: smeserver-motd-addtypekey.patch
 BuildRoot: /var/tmp/%{name}-%{version}
 BuildArchitectures: noarch
 BuildRequires: e-smith-devtools
