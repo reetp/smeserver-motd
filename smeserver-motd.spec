@@ -9,6 +9,7 @@ License: GNU GPL version 2
 URL: http://libreswan.org/
 Group: SMEserver/addon
 Source: %{name}-%{version}.tar.gz
+Patch1: smeserver-motd-addstatuskey.patch
 BuildRoot: /var/tmp/%{name}-%{version}
 BuildArchitectures: noarch
 BuildRequires: e-smith-devtools
@@ -33,6 +34,7 @@ A small contribution to give a more informative display on ssh login
 
 %prep
 %setup
+%patch1 -p1
 
 %build
 perl createlinks
