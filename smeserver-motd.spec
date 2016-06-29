@@ -1,6 +1,6 @@
 %define name smeserver-motd
 %define version 0.1
-%define release 2
+%define release 4
 Summary: Adjust the login motd display
 Name: %{name}
 Version: %{version}
@@ -19,6 +19,12 @@ AutoReqProv: no
 A small contribution to give a more informative display on ssh login
 
 %changelog
+* Mon Jun 27 2016 John Crisp <jcrisp@safeandsoundit.co.uk> 0.1-4.sme
+- Add db status key
+
+* Tue Jun 28 2016 stephane de Labrusse <stephdl@de-labrusse.fr> 0.1-3.sme
+- Initial release to contribs9
+
 * Mon Jun 27 2016 John Crisp <jcrisp@safeandsoundit.co.uk> 0.1-1
 - Initial build
 
